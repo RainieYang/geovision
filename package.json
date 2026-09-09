@@ -1,0 +1,45 @@
+{
+  "name": "geovision",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.5.2",
+  "scripts": {
+    "dev:local-map": "vite --mode local-map --host 127.0.0.1 --port 4175",
+    "dev": "vite --host 127.0.0.1 --port 4173",
+    "build": "tsc -b && vite build && node scripts/prerender.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "check:release": "node scripts/check-release.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.2.0",
+    "@fontsource/ibm-plex-mono": "^5.2.0",
+    "@signal-visualization/core": "file:vendor/signal-visualization/signal-visualization-core-1.2.0.tgz",
+    "@signal-visualization/react": "file:vendor/signal-visualization/signal-visualization-react-1.2.0.tgz",
+    "cesium": "1.91.0",
+    "lucide-react": "^0.468.0",
+    "map-engine-3d": "file:vendor/map-engine/map-engine-3d-0.0.24.tgz",
+    "ol": "^10.9.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.8.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.33.0",
+    "globals": "^16.3.0",
+    "prettier": "3.6.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0",
+    "vite": "^7.1.0",
+    "vite-plugin-static-copy": "^3.1.0",
+    "vitest": "^3.2.4"
+  }
+}

@@ -1,0 +1,1849 @@
+# GeoVision 智能个人网站 PRD
+
+## 1. 项目定位
+
+项目名称暂定：
+
+**GeoVision**
+
+定位：
+
+**面向海外客户的个人技术品牌网站 + 在线技术 Demo 平台。**
+
+核心方向：
+
+* Real-time Visualization
+* WebGIS
+* Cesium / OpenLayers
+* WebGL
+* Three.js
+* WebSocket / Binary Streaming
+* Industrial Visualization
+* IoT Visualization
+* RF / Spectrum Visualization
+* Digital Twin
+
+网站不是传统个人简历站，而是：
+
+**作品展示 + 技术能力证明 + 在线 Demo + 潜在客户转化入口。**
+
+目标用户：
+
+1. 海外软件外包客户
+2. GIS / IoT / Digital Twin 公司
+3. 系统集成商
+4. 工业设备厂商
+5. SDR / RF / 科研团队
+6. 招聘方
+7. GitHub 开源项目访问者
+
+---
+
+# 2. 产品核心目标
+
+## 2.1 第一目标
+
+让用户进入网站 10 秒内明白：
+
+> 这是一个专门做 Real-time GIS / WebGL / Industrial Visualization 的开发者。
+
+而不是：
+
+> 一个普通 React 前端个人网站。
+
+---
+
+## 2.2 第二目标
+
+通过真正可以操作的 Demo 证明：
+
+* 能做复杂 GIS
+* 能做 2D / 3D
+* 能处理实时数据
+* 能处理大量对象
+* 能做 WebGL 高性能渲染
+* 能处理频谱 / 瀑布图等专业数据
+* 能做工业级 UI
+* 能进行系统级可视化设计
+
+---
+
+## 2.3 第三目标
+
+最终形成：
+
+```text
+Google / LinkedIn / Upwork / GitHub
+                ↓
+            GeoVision
+                ↓
+        查看实际在线 Demo
+                ↓
+       了解技术能力和案例
+                ↓
+        Contact / Hire Me
+```
+
+---
+
+# 3. 视觉设计方向
+
+## 3.1 整体视觉
+
+采用：
+
+**工业科技深色主题**
+
+关键词：
+
+* Industrial
+* Engineering
+* Professional
+* Minimal
+* Dark
+* Precise
+* High-end
+* Technical
+
+不要做成：
+
+* 游戏 UI
+* 赛博朋克
+* 军事指挥大屏
+* 满屏发光
+* 蓝色科技线乱飞
+* 普通后台管理系统
+
+目标视觉：
+
+**Palantir + Linear + Vercel + 高端工业软件**
+
+---
+
+# 4. 颜色规范
+
+主背景：
+
+```css
+--bg-primary: #071016;
+--bg-secondary: #0B151C;
+--bg-card: #0E1A22;
+--bg-elevated: #12212B;
+```
+
+边框：
+
+```css
+--border-primary: rgba(255,255,255,0.08);
+--border-hover: rgba(73,200,255,0.28);
+```
+
+主文字：
+
+```css
+--text-primary: #F1F5F7;
+--text-secondary: #8F9DA6;
+--text-muted: #5F717C;
+```
+
+主强调色：
+
+```css
+--accent: #38BDF8;
+--accent-hover: #5CCBFA;
+```
+
+状态色：
+
+```css
+--success: #36C98F;
+--warning: #E8B654;
+--danger: #F15C5C;
+```
+
+原则：
+
+**90% 使用黑灰白，10% 使用蓝青色。**
+
+蓝色只用于：
+
+* CTA
+* Hover
+* 数据高亮
+* 地图轨迹
+* 当前状态
+* 图表重点
+
+---
+
+# 5. 网站整体结构
+
+一级导航：
+
+```text
+Home
+
+Demos
+
+Projects
+
+About
+
+Blog
+
+Contact
+```
+
+第一阶段实际开发：
+
+```text
+Home
+Demos
+Projects
+About
+Contact
+```
+
+Blog 暂时只保留入口。
+
+---
+
+# 6. 首页 Home
+
+首页不是信息堆叠页。
+
+采用：
+
+```text
+Hero
+
+↓
+
+Core Capabilities
+
+↓
+
+Featured Demos
+
+↓
+
+Selected Projects
+
+↓
+
+Technical Stack
+
+↓
+
+About
+
+↓
+
+Contact
+```
+
+---
+
+# 7. Hero 首屏
+
+## 左侧
+
+标题：
+
+**Build Real-World Intelligence**
+
+副标题建议：
+
+**Real-time geospatial, industrial and signal visualization for the web.**
+
+描述：
+
+```text
+I build high-performance visualization applications
+using WebGL, Cesium, OpenLayers and modern web technologies.
+```
+
+按钮：
+
+```text
+Explore Demos
+
+View GitHub
+```
+
+---
+
+## 右侧
+
+使用一个高质量交互式：
+
+**3D Globe / Terrain 场景**
+
+建议直接使用 Cesium。
+
+场景中模拟：
+
+* UAV
+* Vehicle
+* Sensor
+* Satellite
+* Track
+* Connection Line
+
+不要超过：
+
+```text
+5～8 个对象
+```
+
+保持干净。
+
+---
+
+# 8. Hero 动效
+
+鼠标移动：
+
+背景产生非常轻微的：
+
+```text
+radial-gradient
+```
+
+地图保持缓慢 Camera Motion。
+
+轨迹保持轻微流动。
+
+设备有微弱脉冲。
+
+不能出现：
+
+```text
+大面积 glow
+频繁闪烁
+强烈粒子
+```
+
+目标：
+
+**工业感 > 炫酷感。**
+
+---
+
+# 9. Core Capabilities
+
+展示四项核心能力。
+
+## 01
+
+### Geospatial Visualization
+
+```text
+Cesium
+OpenLayers
+2D / 3D GIS
+3D Tiles
+```
+
+---
+
+## 02
+
+### Real-time Data
+
+```text
+WebSocket
+Binary Data
+TypedArray
+MQTT
+```
+
+---
+
+## 03
+
+### Signal Visualization
+
+```text
+Spectrum
+Waterfall
+Constellation
+WebGL
+```
+
+---
+
+## 04
+
+### High Performance
+
+```text
+WebGL
+Web Worker
+GPU Rendering
+Large-scale Data
+```
+
+---
+
+# 10. Demos 页面
+
+这是整个网站最重要的部分。
+
+页面：
+
+```text
+/demos
+```
+
+第一期包含：
+
+### Demo 01
+
+**3D Geospatial Monitoring**
+
+### Demo 02
+
+**WebGL Spectrum Analyzer**
+
+第二阶段：
+
+### Demo 03
+
+Multi-Device Tracking
+
+### Demo 04
+
+Digital Twin
+
+---
+
+# 11. Demo 01：3D Geospatial Monitoring
+
+路径：
+
+```text
+/demos/geospatial
+```
+
+技术：
+
+```text
+React
+TypeScript
+Cesium
+WebSocket
+Zustand
+```
+
+---
+
+# 12. 地图基本能力
+
+必须支持：
+
+* 2D / 3D 切换
+* 缩放
+* 旋转
+* 倾斜
+* Home
+* 全屏
+* 地形
+* Imagery
+* 深色地图主题
+
+---
+
+# 13. 模拟设备
+
+第一版：
+
+```text
+50 UAV
+100 Vehicle
+20 Sensor
+```
+
+总共：
+
+```text
+170 Objects
+```
+
+模拟数据即可。
+
+---
+
+# 14. 实时设备数据
+
+每个设备：
+
+```ts
+{
+  id
+  type
+  longitude
+  latitude
+  altitude
+  heading
+  speed
+  battery
+  status
+  timestamp
+}
+```
+
+实时更新：
+
+```text
+5Hz
+```
+
+后续支持：
+
+```text
+10Hz
+```
+
+---
+
+# 15. 设备列表
+
+左侧设备列表：
+
+分类：
+
+```text
+All
+
+UAV
+
+Vehicle
+
+Sensor
+```
+
+设备显示：
+
+```text
+UAV-001
+
+Online
+```
+
+点击：
+
+地图 FlyTo。
+
+---
+
+# 16. 地图对象
+
+设备根据距离执行：
+
+```text
+LOD
+```
+
+远距离：
+
+```text
+Billboard / Icon
+```
+
+近距离：
+
+```text
+GLB Model
+```
+
+目标：
+
+避免几十个 GLB 同时渲染。
+
+---
+
+# 17. 设备详情
+
+点击地图对象：
+
+右侧显示详情。
+
+内容：
+
+```text
+Device ID
+
+Status
+
+Longitude
+
+Latitude
+
+Altitude
+
+Speed
+
+Heading
+
+Battery
+
+Update Time
+```
+
+---
+
+# 18. 轨迹
+
+设备支持：
+
+```text
+Historical Track
+```
+
+表现：
+
+```text
+Polyline
+```
+
+轨迹可以配置：
+
+```text
+最近 5 分钟
+最近 30 分钟
+完整轨迹
+```
+
+---
+
+# 19. 历史回放
+
+底部 Timeline：
+
+```text
+Play
+
+Pause
+
+Speed
+
+Current Time
+
+Timeline
+```
+
+倍率：
+
+```text
+0.5x
+1x
+2x
+4x
+```
+
+---
+
+# 20. 实时状态
+
+地图右下角：
+
+```text
+LIVE
+```
+
+历史模式：
+
+```text
+PLAYBACK
+```
+
+明确区分。
+
+---
+
+# 21. 实时 Telemetry
+
+右侧显示：
+
+```text
+Altitude
+
+Speed
+
+Battery
+```
+
+折线图。
+
+建议：
+
+```text
+Canvas / WebGL
+```
+
+或者轻量 Chart Library。
+
+---
+
+# 22. Demo 性能指标
+
+必须增加：
+
+```text
+FPS
+
+Object Count
+
+Update Rate
+
+Latency
+
+Memory
+```
+
+例如：
+
+```text
+FPS          60
+
+Objects      170
+
+Updates      5 Hz
+
+Latency      12 ms
+```
+
+这是作品集非常关键的一部分。
+
+---
+
+# 23. Demo 02：WebGL Spectrum Analyzer
+
+路径：
+
+```text
+/demos/spectrum
+```
+
+技术：
+
+```text
+React
+TypeScript
+WebGL
+TypedArray
+Web Worker
+```
+
+---
+
+# 24. Spectrum
+
+频谱图支持：
+
+```text
+Frequency Axis
+
+dBm Axis
+
+Center Frequency
+
+Span
+
+Peak
+
+Marker
+
+Max Hold
+
+Min Hold
+
+Average
+
+Current Trace
+```
+
+---
+
+# 25. Waterfall
+
+支持：
+
+```text
+实时滚动
+
+Color Map
+
+时间轴
+
+dBm Color Scale
+```
+
+模拟：
+
+```text
+100～120 FPS rendering
+```
+
+实际数据更新：
+
+```text
+20～60 FPS
+```
+
+---
+
+# 26. Constellation
+
+支持：
+
+```text
+I/Q Scatter
+
+Zoom
+
+Point Density
+
+Persistence
+```
+
+---
+
+# 27. RF 参数栏
+
+包括：
+
+```text
+Center
+
+Span
+
+RBW
+
+Detector
+
+Trace
+
+Scale
+```
+
+第一阶段全部模拟。
+
+---
+
+# 28. 数据源
+
+第一期：
+
+```text
+FakeDataProvider
+```
+
+随机生成：
+
+```text
+Float32Array
+```
+
+后续抽象：
+
+```ts
+interface SpectrumDataSource {
+    connect(): void
+    disconnect(): void
+    onData(callback): void
+}
+```
+
+实现：
+
+```text
+MockDataSource
+
+WebSocketDataSource
+```
+
+---
+
+# 29. WebGL SDK 抽象
+
+Demo 不要把 Spectrum 代码全部写死在页面。
+
+建议独立：
+
+```text
+/packages
+    /visualization-core
+
+    /spectrum
+
+    /waterfall
+
+    /constellation
+```
+
+未来可发布：
+
+```text
+npm
+```
+
+---
+
+# 30. Projects 页面
+
+路径：
+
+```text
+/projects
+```
+
+第一阶段展示：
+
+### Real-time Geospatial Monitoring
+
+```text
+Cesium
+WebSocket
+React
+```
+
+### RF Visualization SDK
+
+```text
+WebGL
+TypeScript
+FFT
+```
+
+### Multi-device Tracking
+
+```text
+OpenLayers
+WebSocket
+```
+
+### Map Engine
+
+```text
+Cesium
+OpenLayers
+GIS SDK
+```
+
+---
+
+# 31. Project Card
+
+卡片信息：
+
+```text
+Screenshot
+
+Title
+
+Description
+
+Technology Tags
+
+Live Demo
+
+GitHub
+```
+
+---
+
+# 32. Project Detail
+
+未来：
+
+```text
+/projects/:id
+```
+
+结构：
+
+```text
+Overview
+
+Problem
+
+Architecture
+
+Technical Challenges
+
+Performance
+
+Demo
+
+Source
+```
+
+---
+
+# 33. About
+
+不要写传统简历。
+
+突出：
+
+```text
+I build real-time visualization systems
+for geospatial, industrial and signal data.
+```
+
+能力标签：
+
+```text
+React
+
+TypeScript
+
+Cesium
+
+OpenLayers
+
+WebGL
+
+Three.js
+
+WebSocket
+
+GIS
+
+Real-time Visualization
+```
+
+---
+
+# 34. Experience
+
+以能力而不是公司为核心：
+
+```text
+7+ Years Frontend Development
+
+Real-time GIS
+
+Industrial Visualization
+
+High-performance Web Graphics
+```
+
+第一版避免放当前公司项目敏感信息。
+
+---
+
+# 35. Contact
+
+内容：
+
+```text
+Email
+
+GitHub
+
+LinkedIn
+```
+
+CTA：
+
+**Let's Build Something Together**
+
+---
+
+# 36. 联系表单
+
+字段：
+
+```text
+Name
+
+Email
+
+Company
+
+Project Type
+
+Budget
+
+Message
+```
+
+Project Type：
+
+```text
+GIS
+
+Digital Twin
+
+IoT Visualization
+
+WebGL Visualization
+
+RF Visualization
+
+Other
+```
+
+第一阶段暂时不需要后台。
+
+可以：
+
+```text
+mailto
+```
+
+或者 Form 服务。
+
+---
+
+# 37. 智能网站能力
+
+这是区别普通个人网站的重要部分。
+
+网站后期增加：
+
+## Ask Me
+
+右下角 AI 按钮：
+
+```text
+Ask about my work
+```
+
+用户可以问：
+
+```text
+What GIS projects have you built?
+
+Can you build a Cesium application?
+
+Do you work with WebSocket?
+
+Can you visualize binary sensor data?
+```
+
+---
+
+# 38. AI Knowledge Base
+
+数据来源：
+
+```text
+Personal Profile
+
+Projects
+
+Tech Stack
+
+Blog
+
+Project Documentation
+```
+
+使用：
+
+```text
+RAG
+```
+
+第一阶段不用做。
+
+V2 再接入：
+
+```text
+OpenAI API
+```
+
+---
+
+# 39. AI 推荐 Demo
+
+未来支持：
+
+用户：
+
+```text
+I need a real-time IoT tracking platform
+```
+
+AI：
+
+```text
+You may be interested in:
+
+Real-time Geospatial Monitoring
+
+Multi-device Tracking
+```
+
+---
+
+# 40. 技术架构
+
+推荐：
+
+```text
+React
+
+Vite
+
+TypeScript
+
+Tailwind CSS
+
+Zustand
+
+React Router
+```
+
+地图：
+
+```text
+Cesium
+
+OpenLayers
+```
+
+3D：
+
+```text
+Three.js
+```
+
+Visualization：
+
+```text
+WebGL2
+```
+
+Realtime：
+
+```text
+WebSocket
+```
+
+---
+
+# 41. 项目结构
+
+```text
+geo-vision
+
+apps/
+
+    web/
+
+packages/
+
+    ui/
+
+    map-core/
+
+    realtime/
+
+    visualization-core/
+
+    spectrum/
+
+    waterfall/
+
+    constellation/
+
+    types/
+
+public/
+
+    models/
+
+    textures/
+
+    demo-data/
+
+docs/
+```
+
+建议一开始就使用：
+
+```text
+pnpm workspace
+```
+
+---
+
+# 42. 性能原则
+
+必须避免：
+
+```text
+React State 高频更新地图
+
+每帧触发 React Render
+
+JSON 高频大数据
+
+大量 Entity 无控制创建
+```
+
+原则：
+
+```text
+UI State → React
+
+Real-time Data → Runtime Layer
+
+Rendering Data → TypedArray / Buffer
+```
+
+---
+
+# 43. 实时数据架构
+
+建议：
+
+```text
+WebSocket
+
+↓
+
+Binary Decoder
+
+↓
+
+Worker
+
+↓
+
+Runtime Store
+
+↓
+
+Cesium / WebGL
+```
+
+不要：
+
+```text
+WebSocket
+
+↓
+
+JSON
+
+↓
+
+setState
+
+↓
+
+React
+
+↓
+
+Rendering
+```
+
+---
+
+# 44. Mock Server
+
+开发阶段需要：
+
+```text
+Node.js WebSocket Server
+```
+
+模拟：
+
+```text
+GPS
+
+Device Status
+
+Spectrum
+
+Telemetry
+```
+
+这样整个 Demo 不依赖真正硬件。
+
+---
+
+# 45. 响应式
+
+重点：
+
+```text
+Desktop
+≥ 1440
+```
+
+第二：
+
+```text
+Laptop
+1280
+```
+
+移动端：
+
+只保证：
+
+```text
+Home
+Projects
+About
+```
+
+Demo 页面提示：
+
+```text
+Best experienced on desktop
+```
+
+不用强行做手机端 GIS 操作。
+
+---
+
+# 46. SEO
+
+每个页面增加：
+
+```text
+Title
+
+Description
+
+OpenGraph
+
+Keywords
+
+Canonical
+```
+
+关键词：
+
+```text
+WebGL Developer
+
+Cesium Developer
+
+GIS Developer
+
+Real-time Visualization
+
+Digital Twin Developer
+
+Industrial Visualization
+
+RF Visualization
+```
+
+---
+
+# 47. GitHub
+
+每个公开 Demo：
+
+必须有：
+
+```text
+README
+
+Screenshot
+
+Architecture
+
+Tech Stack
+
+Run
+
+Performance
+```
+
+代码不能出现：
+
+* 公司名称
+* 公司设备
+* 公司接口
+* 公司协议
+* 公司数据
+* 公司项目截图
+
+所有数据：
+
+**模拟。**
+
+---
+
+# 48. 第一阶段 MVP
+
+第一阶段不要一次全部完成。
+
+目标：
+
+## Week 1
+
+完成：
+
+```text
+项目初始化
+
+Design System
+
+Home
+
+Navigation
+
+Hero
+
+Projects
+
+About
+
+Contact
+```
+
+---
+
+## Week 2
+
+完成：
+
+```text
+3D Geospatial Demo
+
+模拟设备
+
+实时移动
+
+设备选择
+
+Track
+
+Telemetry
+```
+
+---
+
+## Week 3
+
+完成：
+
+```text
+Spectrum
+
+Waterfall
+
+Constellation
+
+Mock Data
+```
+
+---
+
+## Week 4
+
+完成：
+
+```text
+性能优化
+
+动画
+
+SEO
+
+部署
+
+GitHub README
+
+Portfolio Copywriting
+```
+
+---
+
+# 49. MVP 完成标准
+
+发布时至少：
+
+```text
+Home
+
+3D Geospatial Demo
+
+Spectrum Demo
+
+Projects
+
+About
+
+Contact
+```
+
+其中：
+
+### 3D Demo
+
+必须是真实运行。
+
+### Spectrum Demo
+
+必须是真实 WebGL 绘制。
+
+不能只是：
+
+```text
+截图
+GIF
+视频
+```
+
+---
+
+# 50. Codex 第一阶段开发任务
+
+明天启动 Codex 后，不要直接告诉它：
+
+> 帮我做整个网站。
+
+拆成任务。
+
+第一条：
+
+```text
+初始化一个 pnpm monorepo 项目。
+
+技术栈：
+
+React
+Vite
+TypeScript
+Tailwind CSS
+React Router
+Zustand
+
+目录：
+
+apps/web
+
+packages/ui
+packages/map-core
+packages/realtime
+packages/visualization-core
+packages/types
+
+要求：
+
+1. ESLint
+2. Prettier
+3. TypeScript strict
+4. path alias
+5. dark theme
+6. responsive layout
+7. 不添加业务功能
+8. 保证 pnpm dev 可以正常启动
+
+首先分析架构，然后执行。
+```
+
+---
+
+# 51. Codex 第二条任务
+
+```text
+现在实现 GeoVision 官网首页。
+
+视觉方向：
+
+高级工业科技深色主题。
+
+不要：
+
+赛博朋克
+军工大屏
+传统后台
+大量发光
+复杂背景
+
+参考：
+
+Linear
+Vercel
+Palantir 类工业软件
+
+颜色：
+
+#071016
+#0B151C
+#0E1A22
+#38BDF8
+
+首页结构：
+
+Navbar
+Hero
+Core Capabilities
+Featured Demos
+Projects
+About
+Contact
+
+Hero：
+
+左侧：
+
+Build Real-World Intelligence
+
+Real-time geospatial, industrial and signal visualization for the web.
+
+按钮：
+
+Explore Demos
+View GitHub
+
+右侧暂时使用一个地图占位区域，
+后续接入 Cesium。
+
+要求：
+
+界面简洁、大气、工程感强。
+
+卡片少边框、弱阴影、低发光。
+
+完成后检查 1440、1920 两种宽度。
+```
+
+---
+
+# 52. Codex 第三条任务
+
+```text
+实现 3D Geospatial Monitoring Demo。
+
+使用：
+
+Cesium
+
+要求：
+
+1. 加载 Cesium Viewer
+2. 禁用默认不需要的 Cesium UI
+3. 加载 terrain
+4. 支持 2D / 3D 切换
+5. 创建 MockDeviceDataProvider
+6. 模拟 50 个 UAV
+7. 模拟设备实时移动
+8. 更新频率 5Hz
+9. 地图对象更新不能触发 React 组件重新渲染
+10. 点击设备显示详情
+11. 点击设备列表 FlyTo
+12. 显示历史轨迹
+13. 显示 FPS
+14. 显示对象数量
+15. 保持 Cesium 逻辑和 React UI 解耦
+
+先设计：
+
+MapRuntime
+
+DeviceManager
+
+MockDeviceDataProvider
+
+DeviceStore
+
+然后实现。
+```
+
+---
+
+# 53. Codex 第四条任务
+
+```text
+创建 WebGL Visualization Core。
+
+目标：
+
+未来支持：
+
+Spectrum
+Waterfall
+Constellation
+
+要求：
+
+不要依赖 React。
+
+使用：
+
+TypeScript
+WebGL2
+
+设计：
+
+Renderer
+
+RenderLoop
+
+Viewport
+
+BufferManager
+
+ShaderProgram
+
+DataSource
+
+实现：
+
+start()
+
+stop()
+
+resize()
+
+setData()
+
+destroy()
+
+React 仅负责：
+
+创建 canvas
+初始化实例
+销毁实例
+
+不要把每帧数据存到 React state。
+```
+
+---
+
+# 54. 最终产品定位
+
+网站最终应该让别人看到：
+
+```text
+This developer understands:
+
+Frontend
+
+GIS
+
+3D
+
+WebGL
+
+Real-time Data
+
+Industrial Systems
+
+Performance
+```
+
+而不是：
+
+```text
+This developer knows React.
+```
+
+这是整个项目最核心的判断标准。
