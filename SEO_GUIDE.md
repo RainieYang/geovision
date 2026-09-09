@@ -22,6 +22,8 @@
 
 仓库根目录已经提供 `vercel.json` 和 `netlify.toml`。Vercel 按静态站处理；Netlify 的兜底规则返回 404。不要额外添加将所有路径重写为 `/index.html` 且返回 200 的 SPA 规则，否则会覆盖独立页面和真实 404 行为。
 
+Vercel 配置已固定使用 pnpm 11.5.2，避免平台对自定义安装命令选择旧版本 pnpm。Node.js 通过 `package.json` 固定为 22.x；导入时保留仓库中的安装和构建命令即可。
+
 | 环境变量 | 正式环境 | 预览 / 分支环境 |
 | --- | --- | --- |
 | `VITE_SITE_URL` | 网站最终主域名，例如 `https://your-domain.example`（示例，必须替换） | 同一个正式主域名 |

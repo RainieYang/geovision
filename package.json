@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.5.2",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev:local-map": "vite --mode local-map --host 127.0.0.1 --port 4175",
     "dev": "vite --host 127.0.0.1 --port 4173",
