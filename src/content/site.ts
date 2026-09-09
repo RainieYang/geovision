@@ -1,7 +1,9 @@
 export const site = {
   name: "GeoVision",
-  origin: (import.meta.env.VITE_SITE_URL ||
-    "https://geovision-visualization.the43bbbell.chatgpt.site").replace(/\/+$/, ""),
+  origin: (
+    import.meta.env.VITE_SITE_URL ||
+    "https://geovision-visualization.the43bbbell.chatgpt.site"
+  ).replace(/\/+$/, ""),
   indexable: import.meta.env.VITE_SEO_INDEXABLE !== "false",
   profile: import.meta.env.VITE_PROFILE_NAME || "",
   email: import.meta.env.VITE_CONTACT_EMAIL || "",
@@ -94,4 +96,3 @@ export const projects = [
     tags: ["TypeScript", "WebGL2", "React"],
   },
 ];
-

@@ -7,7 +7,8 @@
   "scripts": {
     "dev:local-map": "vite --mode local-map --host 127.0.0.1 --port 4175",
     "dev": "vite --host 127.0.0.1 --port 4173",
-    "build": "tsc -b && vite build && node scripts/prerender.mjs",
+    "build": "tsc -b && vite build && node scripts/prerender.mjs && node scripts/check-seo.mjs",
+    "check:seo": "node scripts/check-seo.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "test": "vitest run",
     "lint": "eslint .",

@@ -2,61 +2,88 @@ import { createServer } from "vite";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
 const escape = (text) =>
-  text
+  String(text)
     .replaceAll("&", "&amp;")
     .replaceAll('"', "&quot;")
     .replaceAll("<", "&lt;");
 const vite = await createServer({
+  mode: "production",
   cacheDir: resolve("node_modules/.vite/prerender"),
   optimizeDeps: { noDiscovery: true, include: [] },
   server: { middlewareMode: true },
   appType: "custom",
 });
 try {
-  const { render, seo, site, media } = await vite.ssrLoadModule(
-    "/src/entry-server.tsx",
-  );
-  const html = await readFile("dist/index.html", "utf8");
-  const origin = site.origin.replace(/\/$/, "");
-  const social = media["social-default"];
-  const socialMeta = social.src
-    ? `<meta property="og:image" content="${escape(new URL(social.src, origin).href)}"/><meta property="og:image:alt" content="${escape(social.alt)}"/>`
-    : "";
-  for (const [path, meta] of Object.entries(seo)) {
-    const title = `GeoVision — ${meta.title}`;
-    const out = html
-      .replace("</head>", socialMeta + "</head>")
+  const { render, seo, site, pageMetadata, canonicalUrl } =
+    await vite.ssrLoadModule("/src/entry-server.tsx");
+  const origin = new URL(site.origin);
+  if (
+    !["http:", "https:"].includes(origin.protocol) ||
+    origin.pathname !== "/" ||
+    origin.search ||
+    origin.hash
+  ) {
+    throw new Error(
+      "VITE_SITE_URL must be an HTTP(S) origin without a subdirectory, query or fragment",
+    );
+  }
+  if (process.env.CI && !vite.config.env.VITE_SITE_URL)
+    throw new Error(
+      "Set VITE_SITE_URL to the public website origin in the hosting environment",
+    );
+  const template = await readFile("dist/index.html", "utf8");
+  if (!template.includes('<div id="root"></div>')) {
+    throw new Error(
+      "Pre-rendering requires a fresh Vite build. Run pnpm build instead of reusing rendered HTML.",
+    );
+  }
+  const html = template
+    .replace(/<title>.*?<\/title>/, "")
+    .replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?\s*>/, "");
+  function page(path) {
+    const meta = pageMetadata(path);
+    const head =
+      `<title>${escape(meta.title)}</title>` +
+      Object.entries(meta.tags)
+        .map(
+          ([key, value]) =>
+            `<meta data-page-seo ${key.startsWith("og:") ? "property" : "name"}="${key}" content="${escape(value)}"/>`,
+        )
+        .join("") +
+      (meta.canonical
+        ? `<link rel="canonical" href="${escape(meta.canonical)}"/>`
+        : "") +
+      (meta.structuredData
+        ? `<script id="page-structured-data" type="application/ld+json">${JSON.stringify(meta.structuredData).replaceAll("<", "\\u003c")}</script>`
+        : "");
+    return html
+      .replace("</head>", `${head}</head>`)
       .replace(
         '<div id="root"></div>',
         `<div id="root" data-route="${path === "/" ? "" : path}">${render(path)}</div>`,
-      )
-      .replace(/<title>.*?<\/title>/, `<title>${escape(title)}</title>`)
-      .replace(
-        /<meta name="description" content="[^"]*"\s*\/?\s*>/,
-        `<meta name="description" content="${escape(meta.description)}"/>`,
-      )
-      .replace(
-        "</head>",
-        `<link rel="canonical" href="${escape(origin + path)}"/><meta property="og:title" content="${escape(title)}"/><meta property="og:type" content="website"/><meta property="og:url" content="${escape(origin + path)}"/><meta property="og:description" content="${escape(meta.description)}"/></head>`,
       );
+  }
+  for (const path of Object.keys(seo)) {
     const dir = resolve("dist", "." + path);
     await mkdir(dir, { recursive: true });
-    await writeFile(resolve(dir, "index.html"), out);
+    await writeFile(resolve(dir, "index.html"), page(path));
   }
-  await writeFile("dist/404.html", html);
+  await writeFile("dist/404.html", page("/404"));
   await writeFile(
     "dist/robots.txt",
-    `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`,
+    `User-agent: *\nAllow: /\n${site.indexable ? `Sitemap: ${site.origin}/sitemap.xml\n` : ""}`,
   );
   await writeFile(
     "dist/sitemap.xml",
     `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${Object.keys(
       seo,
     )
-      .map((p) => `<url><loc>${escape(origin + p)}</loc></url>`)
+      .map((path) => `<url><loc>${escape(canonicalUrl(path))}</loc></url>`)
       .join("")}</urlset>`,
   );
-  console.log(`Pre-rendered ${Object.keys(seo).length} routes.`);
+  console.log(
+    `Pre-rendered ${Object.keys(seo).length} routes and a noindex 404 page.`,
+  );
 } finally {
   await vite.close();
 }

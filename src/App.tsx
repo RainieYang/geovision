@@ -17,7 +17,6 @@ import {
   Contact,
   NotFound,
 } from "./pages/Marketing";
-import { site } from "./content/site";
 import { pageMetadata, demoIntroductions } from "./content/pageMetadata";
 import { track } from "./runtime/analytics";
 import DesktopGate from "./components/DesktopGate";
@@ -63,7 +62,9 @@ export default function App() {
     window.scrollTo(0, 0);
     const metadata = pageMetadata(pathname);
     document.title = metadata.title;
-    document.querySelectorAll('meta[data-page-seo]').forEach((node) => node.remove());
+    document
+      .querySelectorAll("meta[data-page-seo]")
+      .forEach((node) => node.remove());
     for (const [key, value] of Object.entries(metadata.tags)) {
       const attr = key.startsWith("og:") ? "property" : "name";
       const node =
@@ -138,7 +139,10 @@ export default function App() {
               <Route
                 path="/demos/geospatial"
                 element={
-                  <DesktopGate title="Geospatial monitoring" {...demoIntroductions.geospatial}>
+                  <DesktopGate
+                    title="Geospatial monitoring"
+                    {...demoIntroductions.geospatial}
+                  >
                     <GeoDemo />
                   </DesktopGate>
                 }
@@ -146,7 +150,10 @@ export default function App() {
               <Route
                 path="/demos/spectrum"
                 element={
-                  <DesktopGate title="Spectrum analyzer" {...demoIntroductions.spectrum}>
+                  <DesktopGate
+                    title="Spectrum analyzer"
+                    {...demoIntroductions.spectrum}
+                  >
                     <SpectrumDemo />
                   </DesktopGate>
                 }

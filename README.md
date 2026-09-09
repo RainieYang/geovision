@@ -49,6 +49,8 @@ pnpm check:release # 检查正式公开上线必需的个人信息
 
 ## 部署
 
+Git 仓库连接 Vercel / Netlify 的环境变量、SEO 检查与上线步骤见 [SEO_GUIDE.md](SEO_GUIDE.md)。根目录已提供两种平台的静态部署配置。
+
 `pnpm build` 产物为 `dist/`，可使用静态托管。保留所有路由目录和 `cesium/` 资源，404 回退到 `404.html`。修改域名时先在 `.env.local` 设置 `VITE_SITE_URL` 后重建，以更新 canonical、Open Graph 与 sitemap。
 
 所有 `VITE_*` 都会进入浏览器构建，禁止填入私密服务端密钥。本项目没有后端、账号系统、上传接口或联系表单服务。公开发布前配置真实联系方式、确认案例公开范围、素材授权与底图方案，并完成 QA 文档中的剩余专项验证。

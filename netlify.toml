@@ -1,0 +1,14 @@
+[build]
+  command = "pnpm build"
+  publish = "dist"
+
+[context.deploy-preview.environment]
+  VITE_SEO_INDEXABLE = "false"
+
+[context.branch-deploy.environment]
+  VITE_SEO_INDEXABLE = "false"
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

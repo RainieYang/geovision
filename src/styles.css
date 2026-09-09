@@ -272,6 +272,20 @@ h1 span {
   border: 1px solid #1c303c;
   border-radius: 4px;
 }
+.demo-introduction {
+  padding-top: 40px;
+  padding-bottom: 48px;
+  color: var(--muted);
+}
+.demo-introduction h2 {
+  color: #edf3f6;
+  font-size: 24px;
+}
+.demo-introduction p,
+.demo-introduction ul {
+  max-width: 850px;
+  line-height: 1.8;
+}
 .media-empty {
   background: linear-gradient(130deg, #0c1b25, #0a151d);
 }
