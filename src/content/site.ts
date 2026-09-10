@@ -1,15 +1,58 @@
 export const site = {
   name: "GeoVision",
   origin: (
-    import.meta.env.VITE_SITE_URL ||
-    "https://geovision-visualization.the43bbbell.chatgpt.site"
+    import.meta.env.VITE_SITE_URL || "https://geovision-web.vercel.app"
   ).replace(/\/+$/, ""),
   indexable: import.meta.env.VITE_SEO_INDEXABLE !== "false",
-  profile: import.meta.env.VITE_PROFILE_NAME || "",
-  email: import.meta.env.VITE_CONTACT_EMAIL || "",
-  github: import.meta.env.VITE_GITHUB_URL || "",
+  profile: import.meta.env.VITE_PROFILE_NAME?.trim() || "RainieYang",
+  email:
+    import.meta.env.VITE_CONTACT_EMAIL?.trim() || "yangyi19920718@gmail.com",
+  github:
+    import.meta.env.VITE_GITHUB_URL?.trim() || "https://github.com/RainieYang",
   linkedin: import.meta.env.VITE_LINKEDIN_URL || "",
+  role: "Senior Frontend Developer · GIS & 3D Visualization · AI Application Developer",
+  location: "Chengdu, China · UTC+8",
+  availability: "Available for Remote Collaboration",
+  biography: [
+    "Frontend developer with 7 years of experience, specializing in complex web applications, GIS, 3D visualization, and AI-powered applications.",
+    "Experienced with React, Vue, TypeScript, WebGL, OpenLayers, and Cesium, with the ability to independently handle projects from requirements analysis and architecture design to development and delivery.",
+    "Currently focused on integrating AI Agents with GIS, visualization, and industry-specific applications.",
+  ],
 };
+export const services = [
+  [
+    "Enterprise Web Applications",
+    "Complex business applications built with React, Vue and TypeScript.",
+  ],
+  [
+    "GIS & Mapping Systems",
+    "Mapping applications with OpenLayers, Cesium and integrated geospatial workflows.",
+  ],
+  [
+    "2D/3D Visualization",
+    "Interactive spatial experiences that make complex data easier to explore.",
+  ],
+  [
+    "WebGL Data Visualization",
+    "Browser-based graphics for signals, live data and other demanding visualizations.",
+  ],
+  [
+    "Low-Code & Configuration Tools",
+    "Visual configuration interfaces and tools for building application workflows.",
+  ],
+  [
+    "AI Agent Applications",
+    "AI Agents integrated with GIS, visualization and industry-specific applications.",
+  ],
+  [
+    "Custom Web Development",
+    "End-to-end delivery, from requirements and architecture to implementation.",
+  ],
+  [
+    "Legacy System Modernization",
+    "Updating existing web applications and interfaces for evolving business needs.",
+  ],
+];
 export const capabilities = [
   {
     id: "01",

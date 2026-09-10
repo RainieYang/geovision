@@ -872,6 +872,22 @@ h1 span {
 .about-page .button {
   margin-top: 18px;
 }
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 24px 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.profile-details strong {
+  color: #edf3f6;
+  font-size: 18px;
+}
+.profile-details .profile-availability {
+  color: var(--accent);
+}
 .service-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

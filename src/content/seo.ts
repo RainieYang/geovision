@@ -15,14 +15,14 @@ export const seo: Record<string, { title: string; description: string }> = {
       "Explore the engineering behind Map Engine and the RF Visualization SDK, with interactive examples and implementation details.",
   },
   "/about": {
-    title: "About",
+    title: "About RainieYang",
     description:
-      "Independent development for real-time geospatial, industrial and signal visualization applications.",
+      "Meet RainieYang, a senior frontend developer with 7 years of experience in web applications, GIS, 3D visualization and AI Agent applications.",
   },
   "/contact": {
     title: "Discuss a Project",
     description:
-      "Discuss GIS development, live data visualization and signal SDK integration for your next web application.",
+      "Contact RainieYang for enterprise web applications, GIS, visualization and AI Agent projects. Based in Chengdu, China and available for remote collaboration.",
   },
   "/demos/geospatial": {
     title: "Geospatial Monitoring",

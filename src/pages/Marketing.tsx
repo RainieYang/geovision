@@ -23,7 +23,7 @@ import {
 import MediaSlot from "../components/MediaSlot";
 import MapScreenshotCarousel from "../components/MapScreenshotCarousel";
 import { useDesktop } from "../components/DesktopGate";
-import { capabilities, demos, projects, site } from "../content/site";
+import { capabilities, demos, projects, services, site } from "../content/site";
 import { track } from "../runtime/analytics";
 const HeroMap = lazy(() => import("../integrations/map/HeroMap"));
 function DemoCards() {
@@ -204,17 +204,14 @@ export function Home() {
         </div>
       </section>
       <section className="about-strip">
-        <Eyebrow>03 / About</Eyebrow>
+        <Eyebrow>03 / About {site.profile}</Eyebrow>
         <div>
           <h2>
             At the intersection of
             <br />
             data, maps and graphics.
           </h2>
-          <p>
-            I develop visualization systems for complex, continuously changing
-            data — from moving assets to radio-frequency signals.
-          </p>
+          <p>{site.biography[0]}</p>
           <Link className="text-link" to="/about">
             More about my work
             <ArrowRight size={17} />
@@ -222,9 +219,10 @@ export function Home() {
         </div>
         <div className="stack-list">
           {[
-            "TypeScript / React",
+            "TypeScript / React / Vue",
             "Cesium / OpenLayers",
             "WebGL / Real-time data",
+            "AI Agent Applications",
           ].map((x) => (
             <span key={x}>{x}</span>
           ))}
@@ -324,25 +322,20 @@ export function About() {
     <div className="page-container">
       <div className="about-page">
         <div>
-          <Eyebrow>About {site.profile || "my work"}</Eyebrow>
+          <Eyebrow>About {site.profile}</Eyebrow>
           <h1>
             Complex data.
             <br />
             <span>Clear experiences.</span>
           </h1>
-          <p className="large-copy">
-            I build real-time visualization systems for geospatial, industrial
-            and signal data.
-          </p>
-          <p>
-            My focus is the connection between reliable engineering and useful
-            interfaces: how data arrives, how it is rendered, and how a person
-            makes sense of it.
-          </p>
-          <p>
-            The projects here bring together two existing SDKs — a shared 2D /
-            3D map engine and a WebGL signal visualization toolkit.
-          </p>
+          <p className="large-copy">{site.role}</p>
+          {site.biography.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          <div className="profile-details">
+            <span>{site.location}</span>
+            <span className="profile-availability">{site.availability}</span>
+          </div>
           <ButtonLink to="/projects">Explore the work</ButtonLink>
         </div>
         <MediaSlot id="about" />
@@ -354,20 +347,7 @@ export function About() {
           description="From an idea to an interactive system."
         />
         <div className="service-grid">
-          {[
-            [
-              "GIS applications",
-              "Interactive maps, tracking interfaces and 2D / 3D experiences.",
-            ],
-            [
-              "Live data visualization",
-              "Monitoring interfaces that connect data streams to clear visual context.",
-            ],
-            [
-              "Signal visualization",
-              "Spectrum and waterfall components integrated into your web application.",
-            ],
-          ].map(([a, b]) => (
+          {services.map(([a, b]) => (
             <article key={a}>
               <ArrowUpRight size={22} />
               <h3>{a}</h3>
@@ -404,13 +384,18 @@ export function Contact() {
           <span>that makes sense.</span>
         </h1>
         <p>
-          Have a GIS, industrial or signal visualization project? Share the
-          problem you’re solving and what a useful outcome looks like.
+          Have a web application, GIS, visualization or AI Agent project? Share
+          the problem you’re solving and what a useful outcome looks like.
         </p>
       </div>
       <div className="contact-panel">
         <Mail size={32} strokeWidth={1.3} />
         <h2>Tell me about your project.</h2>
+        <div className="profile-details">
+          <strong>{site.profile}</strong>
+          <span>{site.location}</span>
+          <span className="profile-availability">{site.availability}</span>
+        </div>
         <p>
           A little context goes a long way: your use case, data sources,
           timeline and the kind of help you need.
@@ -460,7 +445,7 @@ export function Contact() {
         <div className="contact-meta">
           <span>GIS DEVELOPMENT</span>
           <span>REAL-TIME VISUALIZATION</span>
-          <span>SDK INTEGRATION</span>
+          <span>AI AGENT APPLICATIONS</span>
         </div>
       </div>
     </div>
