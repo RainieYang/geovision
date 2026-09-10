@@ -65,9 +65,10 @@ export const media: Record<string, MediaAsset> = {
   },
   about: {
     type: "image",
-    src: "",
-    alt: "Developer portrait",
+    src: "/media/geovision-about-workstation.png",
+    alt: "Illustration of a developer workstation with a 3D terrain map, spectrum analyzer and keyboard",
     aspectRatio: "4 / 5",
+    objectPosition: "center",
   },
   "social-default": {
     type: "image",
